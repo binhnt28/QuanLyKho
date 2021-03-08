@@ -26,15 +26,15 @@ class KhachHang{
     }
     static function find($id)
     {
-        $db = DB::getInstance();
-        $req = $db->prepare('SELECT * FROM khachhang WHERE Id = :id');
-        $req->execute(array('id' => $id));
+            $db = DB::getInstance();
+            $req = $db->prepare('SELECT * FROM khachhang WHERE Id = :id');
+            $req->execute(array('id' => $id));
 
-        $item = $req->fetch();
-        if (isset($item['Id'])) {
-            return new KhachHang($item['Id'],$item['TenKH'],$item['DienThoai'],$item['Email'],$item['DiaChi']);
-        }
-        return null;
+            $item = $req->fetch();
+            if (isset($item['Id'])) {
+                return new KhachHang($item['Id'],$item['TenKH'],$item['DienThoai'],$item['Email'],$item['DiaChi']);
+            }
+            return null;
     }
     static function add($ten,$dienthoai,$email,$diachi)
     {

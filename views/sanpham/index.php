@@ -11,7 +11,7 @@ require_once ('models/sanpham.php');
     </div>
 
     <div class="card-body">
-        <a href="index.php?controller=donvitinh&action=insert" class="btn btn-primary mb-3">Thêm</a>
+        <a href="index.php?controller=sanpham&action=insert" class="btn btn-primary mb-3">Thêm</a>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -53,7 +53,7 @@ require_once ('models/sanpham.php');
                             <td><?= $item->GiaBan?></td>
                             <td><?= $item->SoLuong?></td>
                             <td><!--<a  href="index.php?controller=khachhangs&action=showPost&id=--><!--"  class='btn btn-primary mr-3'>Details</a>-->
-                             <a  href="index.php?controller=donvitinh&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Edit</a>
+                             <a  href="index.php?controller=sanpham&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Edit</a>
                              <button type="submit" name="dele" value="<?= $item->Id ?>"    class='btn btn-danger'>Delete</button>
                     </form>
                     </td>
@@ -69,7 +69,7 @@ require_once ('models/sanpham.php');
 <?php
 if(isset($_POST['dele'])){
     $id =$_POST['dele'];
-    DonViTinh::delete($id);
+    SanPham::delete($id);
 }
 ?>
 

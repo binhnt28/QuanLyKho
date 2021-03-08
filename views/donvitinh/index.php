@@ -43,10 +43,9 @@ require_once ('models/donvitinh.php');
                         <tr>
                             <td><?= $item->Id   ?></td>
                             <td><?= $item->DonVi?></td>
-
                             <td><!--<a  href="index.php?controller=khachhangs&action=showPost&id=--><!--"  class='btn btn-primary mr-3'>Details</a>-->
-                                <a  href="index.php?controller=donvitinh&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Edit</a>
-                                <button type="submit" name="dele" value="<?= $item->Id ?>"    class='btn btn-danger'>Delete</button>
+                            <a  href="index.php?controller=donvitinh&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Edit</a>
+                            <button type="submit" name="dele" value="<?= $item->Id ?>"    class='btn btn-danger'>Delete</button>
                     </form>
                     </td>
                     </tr>

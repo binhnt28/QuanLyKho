@@ -18,4 +18,10 @@ class SanPhamController extends BaseController
     {
         $this->render('insert');
     }
+    public function edit()
+    {
+        $sanpham = SanPham::find($_GET['id']);
+        $data = array('sanphams'=>$sanpham);
+        $this->render('edit', $data);
+    }
 }

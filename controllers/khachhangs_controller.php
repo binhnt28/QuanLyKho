@@ -27,9 +27,9 @@ class KhachHangsController extends BaseController
     }
     public function edit()
     {
-        $khachs = KhachHang::find($_GET['id']);
-        $data = array('khachhangs' => $khachs);
-        $this->render('edit', $data);
+            $khachs = KhachHang::find($_GET['id']);
+            $data = array('khachhangs' => $khachs);
+            $this->render('edit', $data);
     }
 
 }

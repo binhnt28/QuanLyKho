@@ -29,18 +29,32 @@ class SanPham
     }
     static function find($id)
     {
-        //code
+        $db = DB::getInstance();
+        $req = $db->prepare('SELECT sp.Id,sp.TenSP,dvt.DonVi,sp.GiaMua,sp.GiaBan,sp.SoLuong FROM sanpham sp JOIN donvitinh dvt ON sp.IdDVT = dvt.Id WHERE sp.Id ='.$id);
+        $req->execute(array('id' => $id));
+
+        $item = $req->fetch();
+        if (isset($item['Id'])) {
+            return new SanPham($item['Id'], $item['TenSP'], $item['DonVi'], $item['GiaMua'], $item['GiaBan'], $item['SoLuong']);
+        }
+        return null;
     }
-    static function add()
+    static function add($ten,$IdDVT,$giamua,$giaban,$soluong)
     {
-        //code
+        $db = DB::getInstance();
+        $reg=$db->query('INSERT INTO sanpham(TenSP,IdDVT,GiaMua,GiaBan,SoLuong) VALUES ("'.$ten.'",'.$IdDVT.','.$giamua.','.$giaban.','.$soluong.')');
+        header('location:index.php?controller=sanpham&action=index');
     }
-    static function update($ten,$giamua,$giaban,$soluong)
+    static function update($id,$ten,$IdDVT,$giamua,$giaban,$soluong)
     {
-        //code
+        $db =DB::getInstance();
+        $reg =$db->query('UPDATE sanpham SET TenSP ="'.$ten.'",IdDVT="'.$IdDVT.'",GiaMua="'.$giamua.'",GiaBan="'.$giaban.'",SoLuong="'.$soluong.'" WHERE Id='.$id);
+        header('location:index.php?controller=sanpham&action=index');
     }
     static function delete($id)
     {
-        //code
+        $db =DB::getInstance();
+        $reg =$db->query('DELETE FROM sanpham WHERE id='.$id);
+        header('location:index.php?controller=sanpham&action=index');
     }
 }
