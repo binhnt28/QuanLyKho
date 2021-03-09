@@ -10,14 +10,18 @@ class NhanVienController extends BaseController
     }
     public function index()
     {
-        //code
+        $nhanvien = NhanVien::all();
+        $data =array('nhanvien'=>$nhanvien);
+        $this->render('index',$data);
     }
     public function insert()
     {
-
+        $this->render('insert');
     }
     public function edit()
     {
-        
+        $nhanvien = NhanVien::find($_GET['id']);
+        $data = array('nhanvien' => $nhanvien);
+        $this->render('edit', $data);
     }
 }
