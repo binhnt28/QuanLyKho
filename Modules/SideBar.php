@@ -28,6 +28,20 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDVT"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Đơn vị</span>
+        </a>
+        <div id="collapseDVT" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Action:</h6>
+                <a class="collapse-item" href="?controller=donvitinh">Danh sách</a>
+                <a class="collapse-item" href="?controller=donvitinh&action=insert">Thêm</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseT"
            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
@@ -36,8 +50,22 @@
         <div id="collapseT" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Action:</h6>
-                <a class="collapse-item" href="buttons.html">Danh sách</a>
-                <a class="collapse-item" href="cards.html">Thêm</a>
+                <a class="collapse-item" href="?controller=sanpham">Danh sách</a>
+                <a class="collapse-item" href="?controller=sanpham&action=insert">Thêm</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNV"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Nhân viên</span>
+        </a>
+        <div id="collapseNV" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Action:</h6>
+                <a class="collapse-item" href="?controller=nhanvien">Danh sách</a>
+                <a class="collapse-item" href="?controller=nhanvien&action=insert">Thêm</a>
             </div>
         </div>
     </li>

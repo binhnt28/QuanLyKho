@@ -1,7 +1,7 @@
 <?php
 require_once ('controllers/base_controller.php');
 require_once ('models/nhanvien.php');
-
+//session_start();
 class NhanVienController extends BaseController
 {
     function __construct()
@@ -10,14 +10,23 @@ class NhanVienController extends BaseController
     }
     public function index()
     {
-        //code
-    }
+       if($_SESSION['quyen']!='admin') {
+            header('location:permisson.php');
+       }
+       else {
+        $nhanvien = NhanVien::all();
+        $data =array('nhanvien'=>$nhanvien);
+        $this->render('index',$data);
+       }
+       }
     public function insert()
     {
-
+        $this->render('insert');
     }
     public function edit()
     {
-        
+        $nhanvien = NhanVien::find($_GET['id']);
+        $data = array('nhanvien' => $nhanvien);
+        $this->render('edit', $data);
     }
 }
