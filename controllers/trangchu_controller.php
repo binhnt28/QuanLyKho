@@ -1,11 +1,11 @@
 <?php
 require_once('controllers/base_controller.php');
 
-class PagesController extends BaseController
+class TrangChuController extends BaseController
 {
     function __construct()
     {
-        $this->folder = 'pages';
+        $this->folder = 'trangchu';
     }
 
     public function home()
@@ -20,5 +20,8 @@ class PagesController extends BaseController
     public function error()
     {
         $this->render('error');
+    }
+    public function  logout(){
+        $this->render('logout');
     }
 }
