@@ -60,4 +60,16 @@ class NhanVien
         $reg =$db->query('DELETE FROM nhanvien WHERE id='.$id);
         header('location:index.php?controller=nhanvien&action=index');
     }
+    static function dangnhap($taikhoan,$matkhau)
+    {
+        $db = DB::getInstance();
+        $req = $db->prepare('SELECT * FROM nhanvien WHERE TaiKhoan ="'.$taikhoan.'" AND MatKhau="'.$matkhau.'"');
+        $req->execute(array('nhanvien' => $taikhoan));
+
+        $item = $req->fetch();
+        if (isset($item['Id'])) {
+            return new NhanVien($item['Id'],$item['TenNV'],$item['DienThoai'],$item['Email'],$item['DiaChi'],$item['TaiKhoan'],$item['MatKhau']);
+        }
+        return null;
+    }
 }

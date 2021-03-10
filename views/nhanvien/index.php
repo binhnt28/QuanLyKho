@@ -55,7 +55,7 @@ require_once ('models/nhanvien.php');
                             <td><?= $item->MatKhau?></td>
                             <td>
                                 <!--                       <a  href="index.php?controller=khachhangs&action=showPost&id=--><!--"  class='btn btn-primary mr-3'>Details</a>-->
-                                <a  href="index.php?controller=khachhangs&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Edit</a>
+                                <a  href="index.php?controller=nhanvien&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Edit</a>
                                 <button type="submit" name="dele" value="<?= $item->Id ?>"    class='btn btn-danger'>Delete</button>
                     </form>
                     </td>

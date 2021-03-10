@@ -1,6 +1,8 @@
 <?php
+
 $controllers = array(
-    'pages' => ['home', 'error'],
+    'pages' => ['home', 'error','login','logout'],
+    'trangchu' => ['home', 'error','logout'],
     'khachhangs'=> ['index','insert','delete','showPost','edit'],
     'donvitinh' => ['index','insert','edit'],
     'sanpham'   =>['index','insert','edit'],
@@ -9,8 +11,8 @@ $controllers = array(
 
 // Nếu các tham số nhận được từ URL không hợp lệ (không thuộc list controller và action có thể gọi
 // thì trang báo lỗi sẽ được gọi ra.
-if (!array_key_exists($controller, $controllers) || !in_array($action, $controllers[$controller])) {
-    $controller = 'pages';
+ if (!array_key_exists($controller, $controllers) || !in_array($action, $controllers[$controller])) {
+    $controller = 'trangchu';
     $action = 'error';
 }
 
