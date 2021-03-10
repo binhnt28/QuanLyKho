@@ -13,7 +13,7 @@ if (isset($_GET['controller'])) {
     }
 }
     else {
-        $controller = 'pages';
+        $controller = 'trangchu';
         $action = 'home';
     }
 require_once('routes.php');

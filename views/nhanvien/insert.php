@@ -24,9 +24,17 @@
         <div class="col-md-4 mb-3">
             <label for="validationDefault02">Mật Khẩu</label>
             <input type="text" class="form-control" id="validationDefault02"name="matkhau" placeholder="Nhập Địa Chỉ.." required>
-            <button type="submit" name="create-kh" class=" mt-2 btn-danger btn">Thêm</button>
-        </div>
 
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationDefault02">IsActive</label>
+            <select class="form-control" name="isactive" >
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            <button type="submit" name="create-kh" class=" mt-2 btn-danger btn">Update</button>
+
+        </div>
     </div>
 </form>
 <?php
@@ -37,7 +45,8 @@ if(isset($_POST['create-kh'])){
     $diachi= $_POST["diachi"];
     $taikhoan= $_POST["taikhoan"];
     $matkhau= $_POST["matkhau"];
-    NhanVien::add($ten,$sdt,$email,$diachi,$taikhoan,$matkhau);
+    $isactive= $_POST['isactive'];
+    NhanVien::add($ten,$sdt,$email,$diachi,$taikhoan,$matkhau,$isactive);
 
 }
 ?>

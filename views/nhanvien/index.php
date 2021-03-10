@@ -53,6 +53,7 @@ require_once ('models/nhanvien.php');
                             <td><?= $item->DiaChi?></td>
                             <td><?= $item->TaiKhoan?></td>
                             <td><?= $item->MatKhau?></td>
+                            <td><?= $item->IsActive?></td>
                             <td>
                                 <!--                       <a  href="index.php?controller=khachhangs&action=showPost&id=--><!--"  class='btn btn-primary mr-3'>Details</a>-->
                                 <a  href="index.php?controller=nhanvien&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Edit</a>

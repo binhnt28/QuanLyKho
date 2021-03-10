@@ -83,11 +83,18 @@ if (isset($_POST['login'])){
     $test = NhanVien::dangnhap($name,$pass);
     //$data = array('nhanvien'=>$test);
    //  echo  $test->TaiKhoan;
+
     if ($test!='') {
-        $_SESSION['username'] = $name;
-        $_SESSION['quyen']='nhanvien';
-        echo "<br>" . $_SESSION['username'];
-        header('location:index.php');
+        $_SESSION['active']=$test->IsActive;
+       if ($test->IsActive!=1){
+           header('location:lock.php');
+       }
+       else {
+           $_SESSION['username'] = $name;
+           $_SESSION['quyen'] = 'admin';
+           echo "<br>" . $_SESSION['username'];
+           header('location:index.php');
+       }
     }
     else echo  "<h2 class='text-center text-danger'>Username or Password không đúng</h2>";
 }

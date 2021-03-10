@@ -25,7 +25,15 @@
         <div class="col-md-4 mb-3">
             <label for="validationDefault02">Địa Chỉ</label>
             <input type="text" class="form-control" id="validationDefault02" value="<?= $nhanvien->MatKhau ?> " name="diachi" placeholder="Nhập Địa Chỉ.." required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationDefault02">IsActive</label>
+            <select class="form-control" name="isactive">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
             <button type="submit" name="edit-kh" class=" mt-2 btn-danger btn">Update</button>
+
         </div>
 
     </div>
@@ -37,6 +45,7 @@ if(isset($_POST['edit-kh'])){
     $sdt= $_POST['sdt'];
     $email= $_POST['email'];
     $diachi= $_POST['diachi'];
-    NhanVien::update($id,$ten,$sdt,$email,$diachi);
+    $isactive= $_POST['isactive'];
+    NhanVien::update($id,$ten,$sdt,$email,$diachi,$isactive);
 }
 ?>

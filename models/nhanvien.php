@@ -8,9 +8,10 @@ class NhanVien
     public $DiaChi;
     public $TaiKhoan;
     public $MatKhau;
+    public $IsActive;
 
 
-    function  __construct($Id,$TenNV,$DienThoai,$Email,$DiaChi,$TaiKhoan,$MatKhau)
+    function  __construct($Id,$TenNV,$DienThoai,$Email,$DiaChi,$TaiKhoan,$MatKhau,$IsActive)
     {
         $this->Id = $Id;
         $this->TenNV = $TenNV;
@@ -19,6 +20,7 @@ class NhanVien
         $this->DiaChi=$DiaChi;
         $this->TaiKhoan=$TaiKhoan;
         $this->MatKhau=$MatKhau;
+        $this->IsActive=$IsActive;
     }
     static function all()
     {
@@ -26,7 +28,7 @@ class NhanVien
         $db =DB::getInstance();
         $reg = $db->query('select *from nhanvien');
         foreach ($reg->fetchAll() as $item){
-            $list[] =new NhanVien($item['Id'],$item['TenNV'],$item['DienThoai'],$item['Email'],$item['DiaChi'],$item['TaiKhoan'],$item['MatKhau']);
+            $list[] =new NhanVien($item['Id'],$item['TenNV'],$item['DienThoai'],$item['Email'],$item['DiaChi'],$item['TaiKhoan'],$item['MatKhau'],$item['IsActive']);
         }
         return $list;
     }
@@ -38,20 +40,20 @@ class NhanVien
 
         $item = $req->fetch();
         if (isset($item['Id'])) {
-            return new NhanVien($item['Id'],$item['TenNV'],$item['DienThoai'],$item['Email'],$item['DiaChi'],$item['TaiKhoan'],$item['MatKhau']);
+            return new NhanVien($item['Id'],$item['TenNV'],$item['DienThoai'],$item['Email'],$item['DiaChi'],$item['TaiKhoan'],$item['MatKhau'],$item['IsActive']);
         }
         return null;
     }
-    static function add($ten,$dienthoai,$email,$diachi,$taikhoan,$matkhau)
+    static function add($ten,$dienthoai,$email,$diachi,$taikhoan,$matkhau,$isactive)
     {
         $db =DB::getInstance();
-        $reg =$db->query('INSERT INTO nhanvien(TenNV,DienThoai,Email,DiaChi,TaiKhoan,MatKhau) VALUES ("'.$ten.'","'.$dienthoai.'","'.$email.'","'.$diachi.'","'.$taikhoan.'","'.$matkhau.'")');
+        $reg =$db->query('INSERT INTO nhanvien(TenNV,DienThoai,Email,DiaChi,TaiKhoan,MatKhau,IsActive) VALUES ("'.$ten.'","'.$dienthoai.'","'.$email.'","'.$diachi.'","'.$taikhoan.'","'.$matkhau.'","'.$isactive.'")');
         header('location:index.php?controller=nhanvien&action=index');
     }
-    static function update($id,$ten,$dienthoai,$email,$diachi,$taikhoan,$matkhau)
+    static function update($id,$ten,$dienthoai,$email,$diachi,$taikhoan,$matkhau,$isactive)
     {
         $db =DB::getInstance();
-        $reg =$db->query('UPDATE nhanvien SET TenNV ="'.$ten.'",DienThoai="'.$dienthoai.'",Email="'.$email.'",DiaChi="'.$diachi.'",TaiKhoan="'.$taikhoan.'",MatKhau="'.$matkhau.'" WHERE Id='.$id);
+        $reg =$db->query('UPDATE nhanvien SET TenNV ="'.$ten.'",DienThoai="'.$dienthoai.'",Email="'.$email.'",DiaChi="'.$diachi.'",TaiKhoan="'.$taikhoan.'",MatKhau="'.$matkhau.'",IsActive="'.$isactive.'" WHERE Id='.$id);
         header('location:index.php?controller=nhanvien&action=index');
     }
     static function delete($id)
@@ -68,7 +70,7 @@ class NhanVien
 
         $item = $req->fetch();
         if (isset($item['Id'])) {
-            return new NhanVien($item['Id'],$item['TenNV'],$item['DienThoai'],$item['Email'],$item['DiaChi'],$item['TaiKhoan'],$item['MatKhau']);
+            return new NhanVien($item['Id'],$item['TenNV'],$item['DienThoai'],$item['Email'],$item['DiaChi'],$item['TaiKhoan'],$item['MatKhau'],$item['IsActive']);
         }
         return null;
     }
