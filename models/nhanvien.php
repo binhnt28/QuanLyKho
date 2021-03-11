@@ -46,14 +46,16 @@ class NhanVien
     }
     static function add($ten,$dienthoai,$email,$diachi,$taikhoan,$matkhau,$isactive)
     {
+        $matkhau=md5($matkhau);
         $db =DB::getInstance();
         $reg =$db->query('INSERT INTO nhanvien(TenNV,DienThoai,Email,DiaChi,TaiKhoan,MatKhau,IsActive) VALUES ("'.$ten.'","'.$dienthoai.'","'.$email.'","'.$diachi.'","'.$taikhoan.'","'.$matkhau.'","'.$isactive.'")');
         header('location:index.php?controller=nhanvien&action=index');
     }
-    static function update($id,$ten,$dienthoai,$email,$diachi,$taikhoan,$matkhau,$isactive)
+    static function update($id,$ten,$dienthoai,$email,$diachi,$isactive)
     {
+       // $matkhau=md5($matkhau);
         $db =DB::getInstance();
-        $reg =$db->query('UPDATE nhanvien SET TenNV ="'.$ten.'",DienThoai="'.$dienthoai.'",Email="'.$email.'",DiaChi="'.$diachi.'",TaiKhoan="'.$taikhoan.'",MatKhau="'.$matkhau.'",IsActive="'.$isactive.'" WHERE Id='.$id);
+        $reg =$db->query('UPDATE nhanvien SET TenNV ="'.$ten.'",DienThoai="'.$dienthoai.'",Email="'.$email.'",DiaChi="'.$diachi.'",IsActive="'.$isactive.'" WHERE Id='.$id);
         header('location:index.php?controller=nhanvien&action=index');
     }
     static function delete($id)
@@ -64,6 +66,7 @@ class NhanVien
     }
     static function dangnhap($taikhoan,$matkhau)
     {
+        $matkhau = md5($matkhau);
         $db = DB::getInstance();
         $req = $db->prepare('SELECT * FROM nhanvien WHERE TaiKhoan ="'.$taikhoan.'" AND MatKhau="'.$matkhau.'"');
         $req->execute(array('nhanvien' => $taikhoan));

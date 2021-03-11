@@ -10,7 +10,7 @@ require_once ('models/nhanvien.php');
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Danh sách khách hàng</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách nhân viên</h6>
     </div>
 
     <div class="card-body">
@@ -24,6 +24,8 @@ require_once ('models/nhanvien.php');
                     <th>Điện thoại</th>
                     <th>Email</th>
                     <th>Địa chỉ</th>
+                    <th>Tài khoản</th>
+                    <th>Mật Khẩu</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -35,6 +37,8 @@ require_once ('models/nhanvien.php');
                     <th>Điện thoại</th>
                     <th>Email</th>
                     <th>Địa chỉ</th>
+                    <th>Tài khoản</th>
+                    <th>Mật Khẩu</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>

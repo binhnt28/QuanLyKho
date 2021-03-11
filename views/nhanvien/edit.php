@@ -19,12 +19,12 @@
             <input type="text" class="form-control" id="validationDefault02" value="<?= $nhanvien->DiaChi ?> " name="diachi" placeholder="Nhập Địa Chỉ.." required>
         </div>
         <div class="col-md-4 mb-3">
-            <label for="validationDefault02">Địa Chỉ</label>
-            <input type="text" class="form-control" id="validationDefault02" value="<?= $nhanvien->TaiKhoan ?> " name="diachi" placeholder="Nhập Địa Chỉ.." required>
+            <label for="validationDefault02">Tài khoản</label>
+            <input type="text" class="form-control" id="validationDefault02" value="<?= $nhanvien->TaiKhoan ?> " name="taikhoan" placeholder="Nhập Tài khoản.."  readonly  required>
         </div>
         <div class="col-md-4 mb-3">
-            <label for="validationDefault02">Địa Chỉ</label>
-            <input type="text" class="form-control" id="validationDefault02" value="<?= $nhanvien->MatKhau ?> " name="diachi" placeholder="Nhập Địa Chỉ.." required>
+            <label for="validationDefault02">Mật khẩu</label>
+            <input type="text" class="form-control" id="validationDefault02" value="<?= $nhanvien->MatKhau ?> " name="matkhau" placeholder="Nhập Mật khẩu.." required readonly>
         </div>
         <div class="col-md-4 mb-3">
             <label for="validationDefault02">IsActive</label>
@@ -45,6 +45,8 @@ if(isset($_POST['edit-kh'])){
     $sdt= $_POST['sdt'];
     $email= $_POST['email'];
     $diachi= $_POST['diachi'];
+//    $taikhoan= $_POST['taikhoan'];
+//    $matkhau= $_POST['matkhau'];
     $isactive= $_POST['isactive'];
     NhanVien::update($id,$ten,$sdt,$email,$diachi,$isactive);
 }

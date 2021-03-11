@@ -2,7 +2,11 @@
 require_once ('models/nhanvien.php');
 require_once ('connection.php');
 session_start();
+unset($_SESSION['active']);
+unset($_SESSION['quyen']);
 unset($_SESSION['username']);
+//$_SESSION['active']="ds";
+//session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -85,16 +89,19 @@ if (isset($_POST['login'])){
    //  echo  $test->TaiKhoan;
 
     if ($test!='') {
-        $_SESSION['active']=$test->IsActive;
-       if ($test->IsActive!=1){
-           header('location:lock.php');
-       }
-       else {
+       // unset($_SESSION['active']);
+        //$_SESSION['active']="0";
+       $_SESSION['active']=$test->IsActive;
+        echo $_SESSION['active'];
+      //  echo "<br>".print_r($test->IsActive);
+        //echo "<br>".print_r($test);
            $_SESSION['username'] = $name;
-           $_SESSION['quyen'] = 'admin';
-           echo "<br>" . $_SESSION['username'];
+           $_SESSION['quyen'] = $name;
+        //   echo "<br>" . $_SESSION['username'];
+         //  $_SESSION['active']=1;
+            //echo  print_r($_SESSION['active']);
            header('location:index.php');
-       }
+
     }
     else echo  "<h2 class='text-center text-danger'>Username or Password không đúng</h2>";
 }

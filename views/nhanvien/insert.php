@@ -32,7 +32,7 @@
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>
-            <button type="submit" name="create-kh" class=" mt-2 btn-danger btn">Update</button>
+            <button type="submit" name="create-kh" class=" mt-2 btn-danger btn">Thêm</button>
 
         </div>
     </div>
