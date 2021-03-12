@@ -1,13 +1,13 @@
 
 <?php
-require_once ('models/sanpham.php');
+require_once ('models/chitietban.php');
 ?>
 
-<h1 class="h3 mb-2 text-center text-gray-800 ">Sản Phẩm</h1>
+<h1 class="h3 mb-2 text-center text-gray-800 ">Chi tiết đơn bán</h1>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Danh sách Sản Phẩm</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách chi tiết đơn bán</h6>
     </div>
 
     <div class="card-body">
@@ -17,24 +17,26 @@ require_once ('models/sanpham.php');
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Đơn vị</th>
-                    <th>Nhà cung cấp</th>
+                    <th>ID Đơn hàng</th>
+                    <th>Tên Sản phẩm</th>
+                    <th>ĐƠn vị tính</th>
                     <th>Giá mua</th>
                     <th>Giá bán</th>
                     <th>Sô lượng</th>
+                    <th>Thành tiền</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
                     <th>ID</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Đơn vị</th>
-                    <th>Nhà cung cấp</th>
+                    <th>ID Đơn hàng</th>
+                    <th>Tên Sản phẩm</th>
+                    <th>ĐƠn vị tính</th>
                     <th>Giá mua</th>
                     <th>Giá bán</th>
                     <th>Sô lượng</th>
+                    <th>Thành tiền</th>
                     <th>Action</th>
 
                 </tr>
@@ -42,22 +44,22 @@ require_once ('models/sanpham.php');
                 <tbody>
 
                 <?php
-                foreach ($sanpham as $item){
+                foreach ($ctb as $item){
 
                     ?>
                     <form method="post">
                         <tr>
                             <td><?= $item->Id   ?></td>
-                            <td><?= $item->TenSP?></td>
-                            <td><?= $item->IdDVT
-                                ?></td> <td><?= $item->IdNCC
-                                ?></td>
-                            <td><?=number_format($item->GiaMua, 0,"." , ",") ?></td>
-                            <td><?= number_format($item->GiaBan, 0,"." , ",")?></td>
+                            <td><?= $item->IdDonBan ?></td>
+                            <td><?= $item->IdSP ?></td>
+                            <td><?= $item->IdDVT ?></td>
+                            <td><?=number_format($item->GiaMua, 2,"." , ",") . ' vnđ' ?></td>
+                            <td><?= number_format($item->GiaBan, 2,"." , ",") . ' vnđ'?></td>
                             <td><?= $item->SoLuong?></td>
+                            <td><?= number_format($item->ThanhTien, 2,"." , ",") . ' vnđ'?></td>
                             <td><!--<a  href="index.php?controller=khachhangs&action=showPost&id=--><!--"  class='btn btn-primary mr-3'>Details</a>-->
-                             <a  href="index.php?controller=sanpham&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Edit</a>
-                             <button type="submit" name="dele" value="<?= $item->Id ?>"    class='btn btn-danger'>Delete</button>
+                                <a  href="index.php?controller=sanpham&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Edit</a>
+                                <button type="submit" name="dele" value="<?= $item->Id ?>"    class='btn btn-danger'>Delete</button>
                     </form>
                     </td>
                     </tr>

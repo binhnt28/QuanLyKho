@@ -19,7 +19,7 @@ class NhanVienController extends BaseController
         $this->render('index',$data);
        }
        }
-    public function insert()
+       public function insert()
     {
         if($_SESSION['quyen']!='admin') {
             header('location:permisson.php');

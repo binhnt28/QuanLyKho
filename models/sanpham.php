@@ -4,15 +4,17 @@ class SanPham
     public $Id;
     public $TenSP;
     public $IdDVT;
+    public $IdNCC;
     public $GiaMua;
     public $GiaBan;
     public $SoLuong;
 
-    function   __construct($Id,$TenSP,$IdDVT,$GiaMua,$GiaBan,$SoLuong)
+    function   __construct($Id,$TenSP,$IdDVT,$IdNCC,$GiaMua,$GiaBan,$SoLuong)
     {
         $this->Id=$Id;
         $this->TenSP=$TenSP;
         $this->IdDVT=$IdDVT;
+        $this->IdNCC=$IdNCC;
         $this->GiaMua=$GiaMua;
         $this->GiaBan=$GiaBan;
         $this->SoLuong=$SoLuong;
@@ -21,34 +23,33 @@ class SanPham
     {
         $list = [];
         $db = DB::getInstance();
-        $reg = $db->query('SELECT sp.Id,sp.TenSP,dvt.DonVi,sp.GiaMua,sp.GiaBan,sp.SoLuong FROM sanpham sp JOIN donvitinh dvt ON sp.IdDVT = dvt.Id');
+        $reg = $db->query('SELECT sp.Id,sp.TenSP,dvt.DonVi,ncc.TenNCC,sp.GiaMua,sp.GiaBan,sp.SoLuong FROM sanpham sp JOIN donvitinh dvt JOIN nhacungcap ncc ON sp.IdNCC = ncc.Id AND sp.IdDVT = dvt.Id');
         foreach ($reg->fetchAll() as $item) {
-            $list[] = new SanPham($item['Id'], $item['TenSP'], $item['DonVi'], $item['GiaMua'], $item['GiaBan'], $item['SoLuong']);
+            $list[] = new SanPham($item['Id'], $item['TenSP'], $item['DonVi'],$item['TenNCC'], $item['GiaMua'], $item['GiaBan'], $item['SoLuong']);
         }
         return $list;
     }
     static function find($id)
     {
         $db = DB::getInstance();
-        $req = $db->prepare('SELECT sp.Id,sp.TenSP,dvt.DonVi,sp.GiaMua,sp.GiaBan,sp.SoLuong FROM sanpham sp JOIN donvitinh dvt ON sp.IdDVT = dvt.Id WHERE sp.Id ='.$id);
+        $req = $db->prepare('SELECT * FROM sanpham WHERE Id ='.$id);
         $req->execute(array('id' => $id));
-
         $item = $req->fetch();
         if (isset($item['Id'])) {
-            return new SanPham($item['Id'], $item['TenSP'], $item['DonVi'], $item['GiaMua'], $item['GiaBan'], $item['SoLuong']);
+                return new SanPham($item['Id'], $item['TenSP'], $item['IdDVT'],$item['IdNCC'], $item['GiaMua'], $item['GiaBan'], $item['SoLuong']);
         }
         return null;
     }
-    static function add($ten,$IdDVT,$giamua,$giaban,$soluong)
+    static function add($ten,$IdDVT,$IdNCC,$giamua,$giaban,$soluong)
     {
         $db = DB::getInstance();
-        $reg=$db->query('INSERT INTO sanpham(TenSP,IdDVT,GiaMua,GiaBan,SoLuong) VALUES ("'.$ten.'",'.$IdDVT.','.$giamua.','.$giaban.','.$soluong.')');
+        $reg=$db->query('INSERT INTO sanpham(TenSP,IdDVT,IdNCC,GiaMua,GiaBan,SoLuong) VALUES ("'.$ten.'",'.$IdDVT.','.$IdNCC.','.$giamua.','.$giaban.','.$soluong.')');
         header('location:index.php?controller=sanpham&action=index');
     }
-    static function update($id,$ten,$IdDVT,$giamua,$giaban,$soluong)
+    static function update($id,$ten,$IdDVT,$IdNCC,$giamua,$giaban,$soluong)
     {
         $db =DB::getInstance();
-        $reg =$db->query('UPDATE sanpham SET TenSP ="'.$ten.'",IdDVT="'.$IdDVT.'",GiaMua="'.$giamua.'",GiaBan="'.$giaban.'",SoLuong="'.$soluong.'" WHERE Id='.$id);
+        $reg =$db->query('UPDATE sanpham SET TenSP ="'.$ten.'",IdDVT="'.$IdDVT.'",IdNCC="'.$IdNCC.'",GiaMua="'.$giamua.'",GiaBan="'.$giaban.'",SoLuong="'.$soluong.'" WHERE Id='.$id);
         header('location:index.php?controller=sanpham&action=index');
     }
     static function delete($id)

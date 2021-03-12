@@ -1,5 +1,6 @@
 <?php
 require_once ('models/nhanvien.php');
+require_once ('models/phanquyen.php');
 require_once ('connection.php');
 session_start();
 unset($_SESSION['active']);
@@ -89,19 +90,31 @@ if (isset($_POST['login'])){
    //  echo  $test->TaiKhoan;
 
     if ($test!='') {
+        $list3 = [];
+        $db3 = DB::getInstance();
+        $reg3 = $db3->query('SELECT ds.Id ,nv.TaiKhoan ,q.TenQuyen FROM danhsachquyen ds JOIN nhanvien nv JOIN quyen q ON ds.IdNV = nv.Id AND ds.IdQuyen = q.Id where ds.IdNV='.$test->Id.' AND ds.IdQuyen=1');
+        foreach ($reg3->fetchAll() as $item3) {
+            $list3[] = new PhanQuyen($item3['Id'], $item3['TaiKhoan'], $item3['TenQuyen']);
+        }
+        $data3 =array('phanquyen'=> $list3);
+        //echo $test->Id;
        // unset($_SESSION['active']);
         //$_SESSION['active']="0";
        $_SESSION['active']=$test->IsActive;
-        echo $_SESSION['active'];
+       //echo $_SESSION['active'];
       //  echo "<br>".print_r($test->IsActive);
         //echo "<br>".print_r($test);
            $_SESSION['username'] = $name;
-           $_SESSION['quyen'] = $name;
-        //   echo "<br>" . $_SESSION['username'];
-         //  $_SESSION['active']=1;
+           if (isset($list3[0]->IdQuyen)){
+               $_SESSION['quyen'] = "admin";
+           }
+           else {
+               $_SESSION['quyen'] = "nhanvien";
+           }
+         echo "<br>" . $_SESSION['quyen'];
+         // $_SESSION['active']=1;
             //echo  print_r($_SESSION['active']);
            header('location:index.php');
-
     }
     else echo  "<h2 class='text-center text-danger'>Username or Password không đúng</h2>";
 }

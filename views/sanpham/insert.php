@@ -1,5 +1,7 @@
 <?php
         require_once ('models/donvitinh.php');
+        require_once ('models/nhacungcap.php');
+
         $list = [];
         $db =DB::getInstance();
         $reg = $db->query('select * from donvitinh');
@@ -7,6 +9,14 @@
              $list[] =new DonViTinh($item['Id'],$item['DonVi']);
                         }
         $data =array('donvi'=> $list);
+        //end dvt
+$list1 = [];
+$db1 =DB::getInstance();
+$reg1 = $db1->query('select * from nhacungcap');
+foreach ($reg1->fetchAll() as $item){
+    $list1[] =new NhaCungCap($item['Id'],$item['TenNCC'],$item['DienThoai'],$item['Email'],$item['DiaChi']);
+}
+$data1 =array('nhacungcap'=> $list1);
 ?>
 <form method="post" name="create-sp">
     <div class="form-group ml-5">
@@ -19,6 +29,14 @@
             <select class="form-control" id="lsp_ma" name="dvt">
                 <?php foreach ($list as $item) {
                    echo "<option value=".$item->Id.">".$item->DonVi ."</option>";
+                 } ?>
+            </select>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Nhà Cung Cấp</label>
+            <select class="form-control" id="lsp_ma" name="ncc">
+                <?php foreach ($list1 as $item) {
+                   echo "<option value=".$item->Id.">".$item->TenNCC ."</option>";
                  } ?>
             </select>
         </div>
@@ -43,10 +61,11 @@ if(isset($_POST['create-sp'])){
   $ten= $_POST["tensp"];
   //  $ten="dsa";
     $dvt= $_POST["dvt"];
+    $ncc= $_POST["ncc"];
     $giamua= $_POST["giamua"];
     $giaban= $_POST["giaban"];
     $soluong= $_POST["soluong"];
-    SanPham::add($ten,$dvt,$giamua,$giaban,$soluong);
+    SanPham::add($ten,$dvt,$ncc,$giamua,$giaban,$soluong);
 }
 ?>
 
