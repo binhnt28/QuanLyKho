@@ -18,6 +18,12 @@ class DonBanController extends BaseController
     {
         $this->render('insert');
     }
+    public function  show()
+    {
+        $donban = DonBan::find($_GET['id']);
+        $data = array('donban' => $donban);
+        $this->render('show', $data);
+    }
     public function edit()
     {
         $donban = DonBan::find($_GET['id']);

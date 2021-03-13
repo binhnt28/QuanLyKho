@@ -1,7 +1,6 @@
 <?php
 
 $controllers = array(
-    'pages' => ['home', 'error','login','logout'],
     'trangchu' => ['home', 'error','logout'],
     'khachhangs'=> ['index','insert','delete','showPost','edit'],
     'nhacungcap'=> ['index','insert','delete','edit'],
@@ -10,7 +9,7 @@ $controllers = array(
     'phanquyen' => ['index','insert','edit'],
     'sanpham'   =>['index','insert','edit'],
     'nhanvien' =>['index','insert','edit'],
-    'donban' =>['index','insert','edit'],
+    'donban' =>['index','insert','edit','show'],
     'chitietban' =>['index','insert','edit'],
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 

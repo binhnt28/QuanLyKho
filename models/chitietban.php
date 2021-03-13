@@ -34,21 +34,19 @@ class ChiTietBan{
     }
     static function find($id)
     {
-        $db = DB::getInstance();
-        $req = $db->prepare('SELECT * FROM donban WHERE Id = :id');
-        $req->execute(array('id' => $id));
-
-        $item = $req->fetch();
-        if (isset($item['Id'])) {
-            return new DonBan($item['Id'],$item['donban']);
+        $list =[];
+        $db =DB::getInstance();
+        $reg = $db->query('SELECT ct.Id ,db.Id As "Don",sp.TenSP ,dvt.DonVi ,ct.GiaMua,ct.GiaBan ,ct.SoLuong ,ct.ThanhTien FROM chitietban ct JOIN donvitinh dvt JOIN donban db JOIN sanpham sp ON ct.IdDonBan = db.Id AND ct.IdSP = sp.Id AND sp.IdDVT = dvt.Id WHERE ct.IdDonBan='.$id);
+        foreach ($reg->fetchAll() as $item){
+            $list[] =new ChiTietBan($item['Id'],$item['Don'],$item['TenSP'],$item['DonVi'],$item['GiaMua'],$item['GiaBan'],$item['SoLuong'],$item['ThanhTien']);
         }
-        return null;
+        return $list;
     }
-    static function add($tendb)
+    static function add($IdDonHang,$IdSP,$GiaMua,$GiaBan,$SoLuong,$ThanhTien)
     {
         $db =DB::getInstance();
-        $reg =$db->query('INSERT INTO donban(donban) VALUES ("'.$tendb.'")');
-        header('location:index.php?controller=donban&action=index');
+        $reg =$db->query('INSERT INTO chitietban(IdDonBan,IdSP,GiaMua,GiaBan,SoLuong,ThanhTien) VALUES ('.$IdDonHang.','.$IdSP.','.$GiaMua.','.$GiaBan.','.$SoLuong.','.$ThanhTien.')');
+
     }
     static function  update($id,$donban)
     {

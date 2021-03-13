@@ -12,7 +12,7 @@ require_once ('models/donban.php');
     </div>
 
     <div class="card-body">
-        <a href="index.php?controller=sanpham&action=insert" class="btn btn-primary mb-3">Thêm</a>
+        <a href="index.php?controller=donban&action=insert" class="btn btn-primary mb-3">Thêm</a>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -22,6 +22,7 @@ require_once ('models/donban.php');
                     <th>Nhân Viên</th>
                     <th>Khách Hàng</th>
                     <th>Tổng tiền</th>
+                    <th>Trạng Thái</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -49,9 +50,19 @@ require_once ('models/donban.php');
                             <td><?= $item->IdNV
                                 ?></td>
                             <td><?= $item->IdKH?></td>
-                            <td><?= number_format($item->ThanhTien, 2,"." , ",") . ' vnđ'?></td>
+                            <td><?= number_format($item->ThanhTien, 0,"." , ",")?> VNĐ</td>
+                            <td><?php
+                                if ($item->TrangThai=="1"){
+                                    echo "Đã Thanh Toán";
+                                }
+                                else {
+                                    echo "Chưa thanh toán";
+                                }
+                                ?></td>
                             <td><!--<a  href="index.php?controller=khachhangs&action=showPost&id=--><!--"  class='btn btn-primary mr-3'>Details</a>-->
-                                <a  href="index.php?controller=donban&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Edit</a>
+                                <a  href="index.php?controller=donban&action=show&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Details</a>
+
+                                <a  href="index.php?controller=donban&action=edit&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Print</a>
                                 <button type="submit" name="dele" value="<?= $item->Id ?>"    class='btn btn-danger'>Delete</button>
                     </form>
                     </td>
@@ -67,7 +78,7 @@ require_once ('models/donban.php');
 <?php
 if(isset($_POST['dele'])){
     $id =$_POST['dele'];
-    SanPham::delete($id);
+    DonBan::delete($id);
 }
 ?>
 

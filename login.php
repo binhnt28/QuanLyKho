@@ -111,7 +111,7 @@ if (isset($_POST['login'])){
            else {
                $_SESSION['quyen'] = "nhanvien";
            }
-         echo "<br>" . $_SESSION['quyen'];
+      //   echo "<br>" . $_SESSION['quyen'];
          // $_SESSION['active']=1;
             //echo  print_r($_SESSION['active']);
            header('location:index.php');
