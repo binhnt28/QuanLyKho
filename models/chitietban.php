@@ -48,16 +48,4 @@ class ChiTietBan{
         $reg =$db->query('INSERT INTO chitietban(IdDonBan,IdSP,GiaMua,GiaBan,SoLuong,ThanhTien) VALUES ('.$IdDonHang.','.$IdSP.','.$GiaMua.','.$GiaBan.','.$SoLuong.','.$ThanhTien.')');
 
     }
-    static function  update($id,$donban)
-    {
-        $db = DB::getInstance();
-        $reg =$db->query('UPDATE donban SET donban ="'.$donban.'" WHERE Id='.$id);
-        header('location:index.php?controller=donban&action=index');
-    }
-    static function delete($id)
-    {
-        $db =DB::getInstance();
-        $reg =$db->query('DELETE FROM donban WHERE id='.$id);
-        header('location:index.php?controller=donban&action=index');
-    }
 }

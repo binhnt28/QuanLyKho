@@ -7,8 +7,6 @@ foreach ($reg->fetchAll() as $item){
     $list[] =new ChiTietBan($item['Id'],$item['Don'],$item['TenSP'],$item['DonVi'],$item['GiaMua'],$item['GiaBan'],$item['SoLuong'],$item['ThanhTien']);
 }
 
-
-
 ?>
 <h1 class="h3 mb-2 text-center text-gray-800 ">Chi tiết đơn</h1>
 
@@ -62,7 +60,7 @@ foreach ($reg->fetchAll() as $item){
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <tfoot>
                 <tr>
-                    <th>ID</th>
+                    <th>STT</th>
                     <th>Sản Phẩm</th>
                     <th>Đơn Giá</th>
                     <th>Số Lượng</th>
@@ -74,8 +72,10 @@ foreach ($reg->fetchAll() as $item){
                 <tbody>
 
                 <?php
+                $dem=1;
                 foreach ($list as $item) {
-                  echo  "<tr><td>$item->Id</td>";
+
+                  echo  "<tr><td>$dem</td>";
                     echo  "<td>$item->IdSP</td>";
                     echo  "<td>". number_format($item->GiaBan,0,",",".")." VNĐ</td>";
                     echo  "<td>$item->SoLuong</td>";
@@ -85,6 +85,7 @@ foreach ($reg->fetchAll() as $item){
 /*                 echo  "<td><?=number_format($donban->ThanhTien,0,",",".") ?> VNĐ</td>";*/
 /*                echo  " <td><?=$donban->TrangThai ?></td>";*/
 //                    echo "</tr>";
+                $dem++;
                 }
                 ?>
 

@@ -1,7 +1,7 @@
 
 
 <?php
-require_once ('models/donban.php');
+require_once ('models/donmua.php');
 ?>
 
 <h1 class="h3 mb-2 text-center text-gray-800 ">Đơn bán</h1>
@@ -12,7 +12,7 @@ require_once ('models/donban.php');
     </div>
 
     <div class="card-body">
-        <a href="index.php?controller=donban&action=insert" class="btn btn-primary mb-3">Thêm</a>
+        <a href="index.php?controller=donmua&action=insert" class="btn btn-primary mb-3">Thêm</a>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -20,7 +20,7 @@ require_once ('models/donban.php');
                     <th>ID</th>
                     <th>Thời gian</th>
                     <th>Nhân Viên</th>
-                    <th>Khách Hàng</th>
+                    <th>Nhà Cung Cấp</th>
                     <th>Tổng tiền</th>
                     <th>Trạng Thái</th>
                     <th>Action</th>
@@ -31,8 +31,9 @@ require_once ('models/donban.php');
                     <th>ID</th>
                     <th>Thời gian</th>
                     <th>Nhân Viên</th>
-                    <th>Khách Hàng</th>
+                    <th>Nhà Cung Cấp</th>
                     <th>Tổng tiền</th>
+                    <th>Trạng Thái</th>
                     <th>Action</th>
 
                 </tr>
@@ -40,16 +41,16 @@ require_once ('models/donban.php');
                 <tbody>
 
                 <?php
-                foreach ($donban as $item){
+                foreach ($donmua as $item){
 
                     ?>
                     <form method="post">
                         <tr>
                             <td><?= $item->Id   ?></td>
-                            <td><?=date('d/m/Y', strtotime($item->NgayBan))?></td>
+                            <td><?=date('d/m/Y', strtotime($item->NgayMua))?></td>
                             <td><?= $item->IdNV
                                 ?></td>
-                            <td><?= $item->IdKH?></td>
+                            <td><?= $item->IdNCC?></td>
                             <td><?= number_format($item->ThanhTien, 0,"." , ",")?> VNĐ</td>
                             <td><?php
                                 if ($item->TrangThai=="1"){
@@ -60,9 +61,9 @@ require_once ('models/donban.php');
                                 }
                                 ?></td>
                             <td><!--<a  href="index.php?controller=khachhangs&action=showPost&id=--><!--"  class='btn btn-primary mr-3'>Details</a>-->
-                                <a  href="index.php?controller=donban&action=show&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Details</a>
+                                <a  href="index.php?controller=donmua&action=show&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Details</a>
 
-                                <a  href="index.php?controller=donban&action=print&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Print</a>
+                                <a  href="index.php?controller=donmua&action=print&id=<?= $item->Id?>"  class='btn btn-primary mr-3'>Print</a>
                                 <button type="submit" name="dele" value="<?= $item->Id ?>"    class='btn btn-danger'>Delete</button>
                     </form>
                     </td>
@@ -78,7 +79,7 @@ require_once ('models/donban.php');
 <?php
 if(isset($_POST['dele'])){
     $id =$_POST['dele'];
-    DonBan::delete($id);
+    donmua::delete($id);
 }
 ?>
 

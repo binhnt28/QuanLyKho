@@ -130,21 +130,22 @@ foreach ($reg_sp->fetchAll() as $item){
 
 </form>
 <?php
-$arr_sp_ma = $_POST['sp_ma'];                   // mảng array do đặt tên name="sp_ma[]"
-$arr_sp_dh_soluong = $_POST['sp_dh_soluong'];   // mảng array do đặt tên name="sp_dh_soluong[]"
-$arr_sp_dh_dongia = $_POST['sp_dh_dongia'];     // mảng array do đặt tên name="sp_dh_dongia[]"
-$arr_sp_dh_tong=[];
-$tongdon=0;
+
 
 // mảng array do đặt tên name="sp_dh_dongia[]"
 if (isset($_POST['add'])){
+    $arr_sp_ma = $_POST['sp_ma'];                   // mảng array do đặt tên name="sp_ma[]"
+    $arr_sp_dh_soluong = $_POST['sp_dh_soluong'];   // mảng array do đặt tên name="sp_dh_soluong[]"
+    $arr_sp_dh_dongia = $_POST['sp_dh_dongia'];     // mảng array do đặt tên name="sp_dh_dongia[]"
+    $arr_sp_dh_tong=[];
+    $tongdon=0;
     $date = date('m/d/Y h:i:s a', time());
   for ($i = 0;$i< count($arr_sp_ma);$i++){
     $arr_sp_dh_tong[$i] = $arr_sp_dh_soluong[$i]*$arr_sp_dh_dongia[$i];
       $tongdon+=$arr_sp_dh_tong[$i];
   }
-    echo print_r($arr_sp_dh_tong);
-    echo  number_format($tongdon,0,".",",");
+//    echo print_r($arr_sp_dh_tong);
+//    echo  number_format($tongdon,0,".",",");
 
 
     //khach hàng đơn
@@ -174,6 +175,6 @@ if (isset($_POST['add'])){
         $thanhtien =$arr_sp_dh_tong[$i];
     ChiTietBan::add($IdDon,$sp_ma,0,$sp_dh_dongia,$sp_dh_soluong,$thanhtien);
     }
-
+        header('location:index.php?controller=donban');
 }
 ?>

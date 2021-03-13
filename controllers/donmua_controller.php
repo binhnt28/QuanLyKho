@@ -1,17 +1,17 @@
 
 <?php
 require_once ('controllers/base_controller.php');
-require_once ('models/donban.php');
-class DonBanController extends BaseController
+require_once ('models/donmua.php');
+class DonMuaController extends BaseController
 {
     function  __construct()
     {
-        $this->folder = 'donban';
+        $this->folder = 'donmua';
     }
     public function  index()
     {
-        $donban = DonBan::all();
-        $data =array('donban'=> $donban);
+        $donmua = DonMua::all();
+        $data =array('donmua'=> $donmua);
         $this->render('index',$data);
     }
     public function  insert()
@@ -20,14 +20,14 @@ class DonBanController extends BaseController
     }
     public function  show()
     {
-        $donban = DonBan::find($_GET['id']);
-        $data = array('donban' => $donban);
+        $donmua = DonMua::find($_GET['id']);
+        $data = array('donmua' => $donmua);
         $this->render('show', $data);
     }
     public function  print()
     {
-        $donban = DonBan::find($_GET['id']);
-        $data = array('donban' => $donban);
+        $donmua = DonMua::find($_GET['id']);
+        $data = array('donmua' => $donmua);
         $this->render('print', $data);
     }
 
