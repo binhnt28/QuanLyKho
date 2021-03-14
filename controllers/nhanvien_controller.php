@@ -19,14 +19,24 @@ class NhanVienController extends BaseController
         $this->render('index',$data);
        }
        }
-    public function insert()
+       public function insert()
     {
-        $this->render('insert');
+        if($_SESSION['quyen']!='admin') {
+            header('location:permisson.php');
+        }
+        else {
+            $this->render('insert');
+        }
     }
     public function edit()
     {
-        $nhanvien = NhanVien::find($_GET['id']);
-        $data = array('nhanvien' => $nhanvien);
-        $this->render('edit', $data);
+        if($_SESSION['quyen']!='admin') {
+            header('location:permisson.php');
+        }
+        else {
+            $nhanvien = NhanVien::find($_GET['id']);
+            $data = array('nhanvien' => $nhanvien);
+            $this->render('edit', $data);
+        }
     }
 }

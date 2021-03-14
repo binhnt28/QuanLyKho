@@ -13,7 +13,7 @@ class DonViTinh{
     {
         $list = [];
         $db =DB::getInstance();
-        $reg = $db->query('select *from donvitinh');
+        $reg = $db->query('select *from DonViTinh');
         foreach ($reg->fetchAll() as $item){
             $list[] =new DonViTinh($item['Id'],$item['DonVi']);
         }
@@ -22,7 +22,7 @@ class DonViTinh{
     static function find($id)
     {
         $db = DB::getInstance();
-        $req = $db->prepare('SELECT * FROM donvitinh WHERE Id = :id');
+        $req = $db->prepare('SELECT * FROM DonViTinh WHERE Id = :id');
         $req->execute(array('id' => $id));
 
         $item = $req->fetch();
@@ -34,19 +34,19 @@ class DonViTinh{
     static function add($ten)
     {
         $db =DB::getInstance();
-        $reg =$db->query('INSERT INTO donvitinh(DonVi) VALUES ("'.$ten.'")');
+        $reg =$db->query('INSERT INTO DonViTinh(DonVi) VALUES ("'.$ten.'")');
         header('location:index.php?controller=donvitinh&action=index');
     }
     static function  update($id,$donvi)
     {
         $db = DB::getInstance();
-        $reg =$db->query('UPDATE donvitinh SET DonVi ="'.$donvi.'" WHERE Id='.$id);
+        $reg =$db->query('UPDATE DonViTinh SET DonVi ="'.$donvi.'" WHERE Id='.$id);
         header('location:index.php?controller=donvitinh&action=index');
     }
     static function delete($id)
     {
         $db =DB::getInstance();
-        $reg =$db->query('DELETE FROM donvitinh WHERE id='.$id);
+        $reg =$db->query('DELETE FROM DonViTinh WHERE Id='.$id);
         header('location:index.php?controller=donvitinh&action=index');
     }
 }

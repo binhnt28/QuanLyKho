@@ -1,12 +1,18 @@
 <?php
 
 $controllers = array(
-    'pages' => ['home', 'error','login','logout'],
     'trangchu' => ['home', 'error','logout'],
     'khachhangs'=> ['index','insert','delete','showPost','edit'],
+    'nhacungcap'=> ['index','insert','delete','edit'],
     'donvitinh' => ['index','insert','edit'],
+    'quyen' => ['index','insert','edit'],
+    'phanquyen' => ['index','insert','edit'],
     'sanpham'   =>['index','insert','edit'],
     'nhanvien' =>['index','insert','edit'],
+    'donban' =>['index','insert','edit','show','print'],
+    'chitietban' =>['index','insert','edit'],
+    'donmua' =>['index','insert','edit','show','print'],
+    'chitietmua' =>['index','insert','edit'],
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 
 // Nếu các tham số nhận được từ URL không hợp lệ (không thuộc list controller và action có thể gọi

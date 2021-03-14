@@ -37,7 +37,7 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
-        <!-- Main Content -->
+        <x`!-- Main Content -->
         <div id="content">
 
             <!-- Topbar -->
@@ -108,3 +108,6 @@
 </body>
 
 </html>
+<?php
+include ("Assets/js/website/donban.php");
+?>
