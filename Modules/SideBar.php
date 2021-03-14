@@ -28,6 +28,34 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDVT"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Đơn vị</span>
+        </a>
+        <div id="collapseDVT" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Action:</h6>
+                <a class="collapse-item" href="?controller=donvitinh">Danh sách</a>
+                <a class="collapse-item" href="?controller=donvitinh&action=insert">Thêm</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNCC"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Nhà Cung Cấp</span>
+        </a>
+        <div id="collapseNCC" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Action:</h6>
+                <a class="collapse-item" href="?controller=nhacungcap">Danh sách</a>
+                <a class="collapse-item" href="?controller=nhacungcap&action=insert">Thêm</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseT"
            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
@@ -36,8 +64,36 @@
         <div id="collapseT" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Action:</h6>
-                <a class="collapse-item" href="buttons.html">Danh sách</a>
-                <a class="collapse-item" href="cards.html">Thêm</a>
+                <a class="collapse-item" href="?controller=sanpham">Danh sách</a>
+                <a class="collapse-item" href="?controller=sanpham&action=insert">Thêm</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNV"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Nhân viên</span>
+        </a>
+        <div id="collapseNV" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Action:</h6>
+                <a class="collapse-item" href="?controller=nhanvien">Danh sách</a>
+                <a class="collapse-item" href="?controller=nhanvien&action=insert">Thêm</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsequyen"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Phân quyền</span>
+        </a>
+        <div id="collapsequyen" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Action:</h6>
+                <a class="collapse-item" href="?controller=quyen">Danh sách quyền</a>
+                <a class="collapse-item" href="?controller=phanquyen">quyền-nhân viên</a>
             </div>
         </div>
     </li>
@@ -64,8 +120,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <a class="collapse-item" href="?controller=donmua">Danh sách đơn</a>
+                <a class="collapse-item" href="?controller=donmua&action=insert">Tạo đơn</a>
             </div>
         </div>
     </li>
@@ -81,10 +137,9 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
+                <a class="collapse-item" href="?controller=donban">Danh sách đơn</a>
+                <a class="collapse-item" href="?controller=donban&action=insert">Tạo đơn</a>
+
             </div>
         </div>
     </li>

@@ -10824,19 +10824,19 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fhoatieu.vn%2Fhinh-nen-cute-de-thuong-203426&psig=AOvVaw0rGogoCy3HVF8do1yA7PTI&ust=1615767257415000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKi3_pzAru8CFQAAAAAdAAAAABAD");
   background-position: center;
   background-size: cover;
 }
 
 .bg-register-image {
-  background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
+  background: url("");
   background-position: center;
   background-size: cover;
 }
 
 .bg-password-image {
-  background: url("https://source.unsplash.com/oWTW-jNGl9I/600x800");
+  background: url("bg-login-image");
   background-position: center;
   background-size: cover;
 }

@@ -37,7 +37,7 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
-        <!-- Main Content -->
+        <x`!-- Main Content -->
         <div id="content">
 
             <!-- Topbar -->
@@ -82,7 +82,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="index.php?controller=trangchu&action=logout">Logout</a>
             </div>
         </div>
     </div>
@@ -108,3 +108,6 @@
 </body>
 
 </html>
+<?php
+include ("Assets/js/website/donban.php");
+?>
