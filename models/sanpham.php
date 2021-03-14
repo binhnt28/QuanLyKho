@@ -23,7 +23,7 @@ class SanPham
     {
         $list = [];
         $db = DB::getInstance();
-        $reg = $db->query('SELECT sp.Id,sp.TenSP,dvt.DonVi,ncc.TenNCC,sp.GiaMua,sp.GiaBan,sp.SoLuong FROM sanpham sp JOIN donvitinh dvt JOIN nhacungcap ncc ON sp.IdNCC = ncc.Id AND sp.IdDVT = dvt.Id');
+        $reg = $db->query('SELECT sp.Id,sp.TenSP,dvt.DonVi,ncc.TenNCC,sp.GiaMua,sp.GiaBan,sp.SoLuong FROM SanPham sp JOIN DonViTinh dvt JOIN NhaCungCap ncc ON sp.IdNCC = ncc.Id AND sp.IdDVT = dvt.Id');
         foreach ($reg->fetchAll() as $item) {
             $list[] = new SanPham($item['Id'], $item['TenSP'], $item['DonVi'],$item['TenNCC'], $item['GiaMua'], $item['GiaBan'], $item['SoLuong']);
         }
@@ -32,7 +32,7 @@ class SanPham
     static function find($id)
     {
         $db = DB::getInstance();
-        $req = $db->prepare('SELECT * FROM sanpham WHERE Id ='.$id);
+        $req = $db->prepare('SELECT * FROM SanPham WHERE Id ='.$id);
         $req->execute(array('id' => $id));
         $item = $req->fetch();
         if (isset($item['Id'])) {
@@ -43,19 +43,19 @@ class SanPham
     static function add($ten,$IdDVT,$IdNCC,$giamua,$giaban,$soluong)
     {
         $db = DB::getInstance();
-        $reg=$db->query('INSERT INTO sanpham(TenSP,IdDVT,IdNCC,GiaMua,GiaBan,SoLuong) VALUES ("'.$ten.'",'.$IdDVT.','.$IdNCC.','.$giamua.','.$giaban.','.$soluong.')');
+        $reg=$db->query('INSERT INTO SanPham(TenSP,IdDVT,IdNCC,GiaMua,GiaBan,SoLuong) VALUES ("'.$ten.'",'.$IdDVT.','.$IdNCC.','.$giamua.','.$giaban.','.$soluong.')');
         header('location:index.php?controller=sanpham&action=index');
     }
     static function update($id,$ten,$IdDVT,$IdNCC,$giamua,$giaban,$soluong)
     {
         $db =DB::getInstance();
-        $reg =$db->query('UPDATE sanpham SET TenSP ="'.$ten.'",IdDVT="'.$IdDVT.'",IdNCC="'.$IdNCC.'",GiaMua="'.$giamua.'",GiaBan="'.$giaban.'",SoLuong="'.$soluong.'" WHERE Id='.$id);
+        $reg =$db->query('UPDATE SanPham SET TenSP ="'.$ten.'",IdDVT="'.$IdDVT.'",IdNCC="'.$IdNCC.'",GiaMua="'.$giamua.'",GiaBan="'.$giaban.'",SoLuong="'.$soluong.'" WHERE Id='.$id);
         header('location:index.php?controller=sanpham&action=index');
     }
     static function delete($id)
     {
         $db =DB::getInstance();
-        $reg =$db->query('DELETE FROM sanpham WHERE id='.$id);
+        $reg =$db->query('DELETE FROM SanPham WHERE Id='.$id);
         header('location:index.php?controller=sanpham&action=index');
     }
 }

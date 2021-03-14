@@ -5,7 +5,7 @@ require_once ('models/nhanvien.php');
 //load nhan vien
 $list = [];
 $db =DB::getInstance();
-$reg = $db->query('select * from nhanvien');
+$reg = $db->query('select * from NhanVien');
 foreach ($reg->fetchAll() as $item){
     $list[] =new NhanVien($item['Id'],$item['TenNV'],$item['DienThoai'],$item['Email'],$item['DiaChi'],$item['TaiKhoan'],$item['MatKhau'],$item['IsActive']);
 }
@@ -14,7 +14,7 @@ $data =array('nhanvien'=> $list);
 //load nhan vien
 $list1 = [];
 $db1 =DB::getInstance();
-$reg1 = $db1->query('select * from quyen');
+$reg1 = $db1->query('select * from Quyen');
 foreach ($reg1->fetchAll() as $item1){
     $list1[] =new Quyen($item1['Id'],$item1['TenQuyen']);
 }
@@ -62,7 +62,7 @@ if(isset($_POST['update-nv'])){
     $id = $quyen->Id;
     $list3 = [];
     $db3 = DB::getInstance();
-    $reg3 = $db3->query('SELECT ds.Id ,nv.TaiKhoan ,q.TenQuyen FROM danhsachquyen ds JOIN nhanvien nv JOIN quyen q ON ds.IdNV = nv.Id AND ds.IdQuyen = q.Id where ds.IdNV='.$nv.' ANd ds.IdQuyen='.$q);
+    $reg3 = $db3->query('SELECT ds.Id ,nv.TaiKhoan ,q.TenQuyen FROM DanhSachQuyen ds JOIN NhanVien nv JOIN Quyen q ON ds.IdNV = nv.Id AND ds.IdQuyen = q.Id where ds.IdNV='.$nv.' ANd ds.IdQuyen='.$q);
     foreach ($reg3->fetchAll() as $item3) {
         $list3[] = new PhanQuyen($item3['Id'], $item3['TaiKhoan'], $item3['TenQuyen']);
     }

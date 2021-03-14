@@ -18,7 +18,7 @@ class NhaCungCap{
     {
         $list = [];
         $db =DB::getInstance();
-        $reg = $db->query('select *from nhacungcap');
+        $reg = $db->query('select *from NhaCungCap');
         foreach ($reg->fetchAll() as $item){
             $list[] =new NhaCungCap($item['Id'],$item['TenNCC'],$item['DienThoai'],$item['Email'],$item['DiaChi']);
         }
@@ -27,7 +27,7 @@ class NhaCungCap{
     static function find($id)
     {
         $db = DB::getInstance();
-        $req = $db->prepare('SELECT * FROM nhacungcap WHERE Id = :id');
+        $req = $db->prepare('SELECT * FROM NhaCungCap WHERE Id = :id');
         $req->execute(array('id' => $id));
 
         $item = $req->fetch();
@@ -39,18 +39,18 @@ class NhaCungCap{
     static function add($ten,$dienthoai,$email,$diachi)
     {
         $db =DB::getInstance();
-        $reg =$db->query('INSERT INTO nhacungcap(TenNCC,DienThoai,Email,DiaChi) VALUES ("'.$ten.'","'.$dienthoai.'","'.$email.'","'.$diachi.'")');
+        $reg =$db->query('INSERT INTO NhaCungCap(TenNCC,DienThoai,Email,DiaChi) VALUES ("'.$ten.'","'.$dienthoai.'","'.$email.'","'.$diachi.'")');
         header('location:index.php?controller=nhacungcap&action=index');
     }
     static function update($id,$ten,$dienthoai,$email,$diachi)
     {
         $db =DB::getInstance();
-        $reg =$db->query('UPDATE nhacungcap SET TenNCC ="'.$ten.'",DienThoai="'.$dienthoai.'",Email="'.$email.'",DiaChi="'.$diachi.'" WHERE Id='.$id);
+        $reg =$db->query('UPDATE NhaCungCap SET TenNCC ="'.$ten.'",DienThoai="'.$dienthoai.'",Email="'.$email.'",DiaChi="'.$diachi.'" WHERE Id='.$id);
         header('location:index.php?controller=nhacungcap&action=index');
     }
     static function  delete($id){
         $db =DB::getInstance();
-        $reg =$db->query('DELETE FROM nhacungcap WHERE id='.$id);
+        $reg =$db->query('DELETE FROM NhaCungCap WHERE id='.$id);
         header('location:index.php?controller=nhacungcap&action=index');
     }
 

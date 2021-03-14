@@ -4,7 +4,7 @@ require_once ('models/donvitinh.php');
 require_once ('models/nhacungcap.php');
 $list = [];
 $db =DB::getInstance();
-$reg = $db->query('select * from donvitinh');
+$reg = $db->query('select * from DonViTinh');
 foreach ($reg->fetchAll() as $item){
     $list[] =new DonViTinh($item['Id'],$item['DonVi']);
 }
@@ -13,7 +13,7 @@ $data =array('donvi'=> $list);
 //end dvt
 $list1 = [];
 $db1 =DB::getInstance();
-$reg1 = $db1->query('select * from nhacungcap');
+$reg1 = $db1->query('select * from NhaCungCap');
 foreach ($reg1->fetchAll() as $item){
     $list1[] =new NhaCungCap($item['Id'],$item['TenNCC'],$item['DienThoai'],$item['Email'],$item['DiaChi']);
 }

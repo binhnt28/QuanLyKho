@@ -9,7 +9,7 @@ require_once ('models/chitietmua.php');
 
 $list = [];
 $db =DB::getInstance();
-$reg = $db->query('select * from nhanvien');
+$reg = $db->query('select * from NhanVien');
 foreach ($reg->fetchAll() as $item){
     $list[] =new NhanVien($item['Id'],$item['TenNV'],$item['DienThoai'],$item['Email'],$item['DiaChi'],$item['TaiKhoan'],$item['MatKhau'],$item['IsActive']);
 }
@@ -18,7 +18,7 @@ foreach ($reg->fetchAll() as $item){
 //load khach hang
 $list1 = [];
 $db1 =DB::getInstance();
-$reg1 = $db1->query('select * from nhacungcap');
+$reg1 = $db1->query('select * from NhaCungCap');
 foreach ($reg1->fetchAll() as $item){
     $list1[] =new NhaCungCap($item['Id'],$item['TenNCC'],$item['DienThoai'],$item['Email'],$item['DiaChi']);
 }
@@ -26,7 +26,7 @@ foreach ($reg1->fetchAll() as $item){
 //end load nhan vien
 $sp = [];
 $db_sp =DB::getInstance();
-$reg_sp = $db_sp->query('SELECT * FROM donvitinh');
+$reg_sp = $db_sp->query('SELECT * FROM DonViTinh');
 foreach ($reg_sp->fetchAll() as $item){
     $sp[] =new DonViTinh($item['Id'], $item['DonVi']);
 }
@@ -171,7 +171,7 @@ if (isset($_POST['add'])){
 
     $donban = [];
     $db_db =DB::getInstance();
-    $reg_db = $db_db->query('SELECT * FROM donmua ORDER BY Id DESC');
+    $reg_db = $db_db->query('SELECT * FROM DonMua ORDER BY Id DESC');
     foreach ($reg_db->fetchAll() as $item){
         $donban[] =new DonMua($item['Id'],$item['NgayMua'],$item['IdNV'],$item['IdNCC'],$item['ThanhTien'],$item['TrangThai']);;
     }

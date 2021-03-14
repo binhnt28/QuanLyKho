@@ -9,7 +9,7 @@ require_once ('models/chitietban.php');
 
 $list = [];
 $db =DB::getInstance();
-$reg = $db->query('select * from nhanvien');
+$reg = $db->query('select * from NhanVien');
 foreach ($reg->fetchAll() as $item){
     $list[] =new NhanVien($item['Id'],$item['TenNV'],$item['DienThoai'],$item['Email'],$item['DiaChi'],$item['TaiKhoan'],$item['MatKhau'],$item['IsActive']);
 }
@@ -18,7 +18,7 @@ foreach ($reg->fetchAll() as $item){
 //load khach hang
 $list1 = [];
 $db1 =DB::getInstance();
-$reg1 = $db1->query('select * from khachhang');
+$reg1 = $db1->query('select * from KhachHang');
 foreach ($reg1->fetchAll() as $item){
     $list1[] =new KhachHang($item['Id'],$item['TenKH'],$item['DienThoai'],$item['Email'],$item['DiaChi']);
 }
@@ -26,7 +26,7 @@ foreach ($reg1->fetchAll() as $item){
 //end load nhan vien
 $sp = [];
 $db_sp =DB::getInstance();
-$reg_sp = $db_sp->query('SELECT sp.Id,sp.TenSP,dvt.DonVi,ncc.TenNCC,sp.GiaMua,sp.GiaBan,sp.SoLuong FROM sanpham sp JOIN donvitinh dvt JOIN nhacungcap ncc ON sp.IdNCC = ncc.Id AND sp.IdDVT = dvt.Id');
+$reg_sp = $db_sp->query('SELECT sp.Id,sp.TenSP,dvt.DonVi,ncc.TenNCC,sp.GiaMua,sp.GiaBan,sp.SoLuong FROM SanPham sp JOIN DonViTinh dvt JOIN NhaCungCap ncc ON sp.IdNCC = ncc.Id AND sp.IdDVT = dvt.Id');
 foreach ($reg_sp->fetchAll() as $item){
     $sp[] =new SanPham($item['Id'], $item['TenSP'], $item['DonVi'],$item['TenNCC'], $item['GiaMua'], $item['GiaBan'], $item['SoLuong']);
 }
@@ -157,7 +157,7 @@ if (isset($_POST['add'])){
 
     $donban = [];
     $db_db =DB::getInstance();
-    $reg_db = $db_db->query('SELECT * FROM donban ORDER BY Id DESC');
+    $reg_db = $db_db->query('SELECT * FROM DonBan ORDER BY Id DESC');
     foreach ($reg_db->fetchAll() as $item){
         $donban[] =new DonBan($item['Id'],$item['NgayBan'],$item['IdNV'],$item['IdKH'],$item['Tong'],$item['TrangThai']);;
     }

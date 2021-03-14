@@ -19,7 +19,7 @@ if (isset($_GET['controller'])) {
     }
 }
     else {
-        $controller = 'trangchu';
-        $action = 'home';
+        $controller = 'sanpham';
+        $action = 'index';
     }
 require_once('routes.php');

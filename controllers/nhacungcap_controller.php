@@ -25,7 +25,7 @@ class NhaCungCapController extends BaseController
     }
     public function edit()
     {
-        $nhacungcap = KhachHang::find($_GET['id']);
+        $nhacungcap = NhaCungCap::find($_GET['id']);
         $data = array('nhacungcap' => $nhacungcap);
         $this->render('edit', $data);
     }

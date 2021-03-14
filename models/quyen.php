@@ -13,7 +13,7 @@ class Quyen{
     {
         $list = [];
         $db =DB::getInstance();
-        $reg = $db->query('select *from quyen');
+        $reg = $db->query('select *from Quyen');
         foreach ($reg->fetchAll() as $item){
             $list[] =new Quyen($item['Id'],$item['TenQuyen']);
         }
@@ -22,7 +22,7 @@ class Quyen{
     static function find($id)
     {
         $db = DB::getInstance();
-        $req = $db->prepare('SELECT * FROM quyen WHERE Id = :id');
+        $req = $db->prepare('SELECT * FROM Quyen WHERE Id = :id');
         $req->execute(array('id' => $id));
 
         $item = $req->fetch();
@@ -34,19 +34,19 @@ class Quyen{
     static function add($ten)
     {
         $db =DB::getInstance();
-        $reg =$db->query('INSERT INTO quyen(TenQuyen) VALUES ("'.$ten.'")');
+        $reg =$db->query('INSERT INTO Quyen(TenQuyen) VALUES ("'.$ten.'")');
         header('location:index.php?controller=quyen&action=index');
     }
     static function  update($id,$ten)
     {
         $db = DB::getInstance();
-        $reg =$db->query('UPDATE quyen SET TenQuyen ="'.$ten.'" WHERE Id='.$id);
+        $reg =$db->query('UPDATE Quyen SET TenQuyen ="'.$ten.'" WHERE Id='.$id);
         header('location:index.php?controller=quyen&action=index');
     }
     static function delete($id)
     {
         $db =DB::getInstance();
-        $reg =$db->query('DELETE FROM quyen WHERE id='.$id);
+        $reg =$db->query('DELETE FROM Quyen WHERE id='.$id);
         header('location:index.php?controller=quyen&action=index');
     }
 }

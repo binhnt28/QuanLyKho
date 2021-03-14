@@ -47,7 +47,9 @@ unset($_SESSION['username']);
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6 d-none d-lg-block ">
+                            <img src="https://o.vdoc.vn/data/image/2020/09/07/hinh-nen-cute-de-thuong-10.jpg" style="width: 100%;height: 100%">
+                        </div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
@@ -92,7 +94,7 @@ if (isset($_POST['login'])){
     if ($test!='') {
         $list3 = [];
         $db3 = DB::getInstance();
-        $reg3 = $db3->query('SELECT ds.Id ,nv.TaiKhoan ,q.TenQuyen FROM danhsachquyen ds JOIN nhanvien nv JOIN quyen q ON ds.IdNV = nv.Id AND ds.IdQuyen = q.Id where ds.IdNV='.$test->Id.' AND ds.IdQuyen=1');
+        $reg3 = $db3->query('SELECT ds.Id ,nv.TaiKhoan ,q.TenQuyen FROM DanhSachQuyen ds JOIN NhanVien nv JOIN Quyen q ON ds.IdNV = nv.Id AND ds.IdQuyen = q.Id where ds.IdNV='.$test->Id.' AND ds.IdQuyen=1');
         foreach ($reg3->fetchAll() as $item3) {
             $list3[] = new PhanQuyen($item3['Id'], $item3['TaiKhoan'], $item3['TenQuyen']);
         }

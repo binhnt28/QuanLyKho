@@ -26,7 +26,7 @@ class ChiTietBan{
     {
         $list =[];
         $db =DB::getInstance();
-        $reg = $db->query('SELECT ct.Id ,db.Id As "Don",sp.TenSP ,dvt.DonVi ,ct.GiaMua,ct.GiaBan ,ct.SoLuong ,ct.ThanhTien FROM chitietban ct JOIN donvitinh dvt JOIN donban db JOIN sanpham sp ON ct.IdDonBan = db.Id AND ct.IdSP = sp.Id AND sp.IdDVT = dvt.Id');
+        $reg = $db->query('SELECT ct.Id ,db.Id As "Don",sp.TenSP ,dvt.DonVi ,ct.GiaMua,ct.GiaBan ,ct.SoLuong ,ct.ThanhTien FROM ChiTietBan ct JOIN DonViTinh dvt JOIN DonBan db JOIN SanPham sp ON ct.IdDonBan = db.Id AND ct.IdSP = sp.Id AND sp.IdDVT = dvt.Id');
         foreach ($reg->fetchAll() as $item){
             $list[] =new ChiTietBan($item['Id'],$item['Don'],$item['TenSP'],$item['DonVi'],$item['GiaMua'],$item['GiaBan'],$item['SoLuong'],$item['ThanhTien']);
         }
@@ -36,7 +36,7 @@ class ChiTietBan{
     {
         $list =[];
         $db =DB::getInstance();
-        $reg = $db->query('SELECT ct.Id ,db.Id As "Don",sp.TenSP ,dvt.DonVi ,ct.GiaMua,ct.GiaBan ,ct.SoLuong ,ct.ThanhTien FROM chitietban ct JOIN donvitinh dvt JOIN donban db JOIN sanpham sp ON ct.IdDonBan = db.Id AND ct.IdSP = sp.Id AND sp.IdDVT = dvt.Id WHERE ct.IdDonBan='.$id);
+        $reg = $db->query('SELECT ct.Id ,db.Id As "Don",sp.TenSP ,dvt.DonVi ,ct.GiaMua,ct.GiaBan ,ct.SoLuong ,ct.ThanhTien FROM ChiTietBan ct JOIN DonViTinh dvt JOIN DonBan db JOIN SanPham sp ON ct.IdDonBan = db.Id AND ct.IdSP = sp.Id AND sp.IdDVT = dvt.Id WHERE ct.IdDonBan='.$id);
         foreach ($reg->fetchAll() as $item){
             $list[] =new ChiTietBan($item['Id'],$item['Don'],$item['TenSP'],$item['DonVi'],$item['GiaMua'],$item['GiaBan'],$item['SoLuong'],$item['ThanhTien']);
         }
@@ -45,7 +45,7 @@ class ChiTietBan{
     static function add($IdDonHang,$IdSP,$GiaMua,$GiaBan,$SoLuong,$ThanhTien)
     {
         $db =DB::getInstance();
-        $reg =$db->query('INSERT INTO chitietban(IdDonBan,IdSP,GiaMua,GiaBan,SoLuong,ThanhTien) VALUES ('.$IdDonHang.','.$IdSP.','.$GiaMua.','.$GiaBan.','.$SoLuong.','.$ThanhTien.')');
+        $reg =$db->query('INSERT INTO ChiTietBan(IdDonBan,IdSP,GiaMua,GiaBan,SoLuong,ThanhTien) VALUES ('.$IdDonHang.','.$IdSP.','.$GiaMua.','.$GiaBan.','.$SoLuong.','.$ThanhTien.')');
 
     }
 }

@@ -52,7 +52,7 @@ if(isset($_POST['create-kh'])){
 
     $list1 = [];
     $db1 = DB::getInstance();
-    $reg1 = $db1->query('SELECT * FROM nhanvien  where TaiKhoan="'.$taikhoan.'"');
+    $reg1 = $db1->query('SELECT * FROM NhanVien  where TaiKhoan="'.$taikhoan.'"');
     foreach ($reg1->fetchAll() as $item) {
         $list1[] = new NhanVien($item['Id'], $item['TenNV'], $item['DienThoai'], $item['Email'], $item['DiaChi'],$item['TaiKhoan'], $item['MatKhau'], $item['IsActive']);
     }

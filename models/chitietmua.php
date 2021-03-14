@@ -25,7 +25,7 @@ class ChiTietMua{
     {
         $list =[];
         $db =DB::getInstance();
-        $reg = $db->query('SELECT ct.Id ,db.Id As "Don",ct.TenSP ,dvt.DonVi ,ct.GiaMua,ct.SoLuong ,ct.ThanhTien FROM chitietmua ct JOIN donvitinh dvt JOIN donmua db ON ct.IdDonMua = db.Id AND dvt.Id = ct.IdDVT');
+        $reg = $db->query('SELECT ct.Id ,db.Id As "Don",ct.TenSP ,dvt.DonVi ,ct.GiaMua,ct.SoLuong ,ct.ThanhTien FROM ChiTietMua ct JOIN DonViTinh dvt JOIN DonMua db ON ct.IdDonMua = db.Id AND dvt.Id = ct.IdDVT');
         foreach ($reg->fetchAll() as $item){
             $list[] =new ChiTietMua($item['Id'],$item['Don'],$item['TenSP'],$item['DonVi'],$item['GiaMua'],$item['SoLuong'],$item['ThanhTien']);
         }
@@ -35,7 +35,7 @@ class ChiTietMua{
     {
         $list =[];
         $db =DB::getInstance();
-        $reg = $db->query('SELECT ct.Id ,db.Id As "Don",ct.TenSP ,dvt.DonVi ,ct.GiaMua,ct.SoLuong ,ct.ThanhTien FROM chitietmua ct JOIN donvitinh dvt JOIN donmua db ON ct.IdDonMua = db.Id AND dvt.Id = ct.IdDVT WHERE ct.IdDonMua='.$id);
+        $reg = $db->query('SELECT ct.Id ,db.Id As "Don",ct.TenSP ,dvt.DonVi ,ct.GiaMua,ct.SoLuong ,ct.ThanhTien FROM ChiTietMua ct JOIN DonViTinh dvt JOIN DonMua db ON ct.IdDonMua = db.Id AND dvt.Id = ct.IdDVT WHERE ct.IdDonMua='.$id);
         foreach ($reg->fetchAll() as $item){
             $list[] =new ChiTietMua($item['Id'],$item['Don'],$item['TenSP'],$item['DonVi'],$item['GiaMua'],$item['SoLuong'],$item['ThanhTien']);
         }
@@ -44,7 +44,7 @@ class ChiTietMua{
     static function add($IdDonHang,$IdSP,$IdDVT,$GiaMua,$SoLuong,$ThanhTien)
     {
         $db =DB::getInstance();
-        $reg =$db->query('INSERT INTO chitietmua(IdDonMua,TenSP,IdDVT,GiaMua,SoLuong,ThanhTien) VALUES ('.$IdDonHang.',"'.$IdSP.'",'.$IdDVT.','.$GiaMua.','.$SoLuong.','.$ThanhTien.')');
+        $reg =$db->query('INSERT INTO ChiTietMua(IdDonMua,TenSP,IdDVT,GiaMua,SoLuong,ThanhTien) VALUES ('.$IdDonHang.',"'.$IdSP.'",'.$IdDVT.','.$GiaMua.','.$SoLuong.','.$ThanhTien.')');
 
     }
 
