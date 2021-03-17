@@ -70,7 +70,7 @@ foreach ($reg->fetchAll() as $item){
         <p><i><u>Chi tiết đơn hàng</u></i></p>
         <table border="1" width="100%" cellspacing="0" cellpadding="5">
             <thead>
-            <tr style="text-align: center">
+            <tr style="text-align: center;">
                 <th>STT</th>
                 <th>Sản phẩm</th>
                 <th>Số lượng</th>

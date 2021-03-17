@@ -21,6 +21,8 @@ class TrangChuController extends BaseController
     {
         $this->render('error');
     }
+
+
     public function  logout(){
         $this->render('logout');
     }

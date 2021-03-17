@@ -20,7 +20,7 @@ require_once ('models/nhanvien.php');
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tên KH</th>
+                    <th>Tên NV</th>
                     <th>Điện thoại</th>
                     <th>Email</th>
                     <th>Địa chỉ</th>
@@ -33,7 +33,7 @@ require_once ('models/nhanvien.php');
                 <tr>
 
                     <th>ID</th>
-                    <th>Tên KH</th>
+                    <th>Tên NV</th>
                     <th>Điện thoại</th>
                     <th>Email</th>
                     <th>Địa chỉ</th>

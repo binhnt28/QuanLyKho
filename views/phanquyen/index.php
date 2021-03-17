@@ -16,7 +16,7 @@ require_once ('models/phanquyen.php');
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>UserName</th>
+                    <th>Tài khoản</th>
                     <th>Quyền</th>
                     <th>Action</th>
                 </tr>
@@ -24,7 +24,7 @@ require_once ('models/phanquyen.php');
                 <tfoot>
                 <tr>
                     <th>ID</th>
-                    <th>UserName</th>
+                    <th>Tài khoản</th>
                     <th>Quyền</th>
                     <th>Action</th>
 

@@ -53,35 +53,23 @@ unset($_SESSION['username']);
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Xin chào</h1>
                                 </div>
                                 <form class="user">
                                     <div class="form-group">
                                         <input name="user" type="text" class="form-control form-control-user"
                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                               placeholder="Enter Email Address...">
+                                               placeholder="Tài khoản...">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="pass" class="form-control form-control-user"
-                                               id="exampleInputPassword" placeholder="Password">
+                                               id="exampleInputPassword" placeholder="Mật khẩu">
                                     </div>
-<!--                                    <div class="form-group">-->
-<!--                                        <div class="custom-control custom-checkbox small">-->
-<!--                                            <input type="checkbox" class="custom-control-input" id="customCheck">-->
-<!--                                            <label class="custom-control-label" for="customCheck">Remember-->
-<!--                                                Me</label>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
+
                                     <button type="submit" name="login" class="btn btn-primary btn-user btn-block">
-                                        Login
+                                        Đăng nhập
                                     </button>
-                                    <hr>
-                                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                                        <i class="fab fa-google fa-fw"></i> Login with Google
-                                    </a>
-                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                    </a>
+
                                 </form>
                            <?php
 if (isset($_POST['login'])){
@@ -99,13 +87,7 @@ if (isset($_POST['login'])){
             $list3[] = new PhanQuyen($item3['Id'], $item3['TaiKhoan'], $item3['TenQuyen']);
         }
         $data3 =array('phanquyen'=> $list3);
-        //echo $test->Id;
-       // unset($_SESSION['active']);
-        //$_SESSION['active']="0";
        $_SESSION['active']=$test->IsActive;
-       //echo $_SESSION['active'];
-      //  echo "<br>".print_r($test->IsActive);
-        //echo "<br>".print_r($test);
            $_SESSION['username'] = $name;
            if (isset($list3[0]->IdQuyen)){
                $_SESSION['quyen'] = "admin";
@@ -113,12 +95,9 @@ if (isset($_POST['login'])){
            else {
                $_SESSION['quyen'] = "nhanvien";
            }
-      //   echo "<br>" . $_SESSION['quyen'];
-         // $_SESSION['active']=1;
-            //echo  print_r($_SESSION['active']);
            header('location:index.php');
     }
-    else echo  "<h2 class='text-center text-danger'>Username or Password không đúng</h2>";
+    else echo  "<h2 class='text-center text-danger'>Tài khoản hoặc mật khẩu không đúng</h2>";
 }
 ?>
                             </div>

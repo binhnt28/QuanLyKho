@@ -4,7 +4,7 @@ require_once ('connection.php');
 <form method="post" name="create-kh">
     <div class="form-group ml-5">
         <div class="col-md-4 mb-3">
-            <label for="validationDefault01">Tên Khách Hàng</label>
+            <label for="validationDefault01">Tên Nhân viên</label>
             <input type="text" class="form-control" id="validationDefault01" name="tenkh" placeholder="Tên" required>
         </div>
         <div class="col-md-4 mb-3">
@@ -22,11 +22,11 @@ require_once ('connection.php');
         </div>
         <div class="col-md-4 mb-3">
             <label for="validationDefault02">Tài Khoản</label>
-            <input type="text" class="form-control" id="validationDefault02"name="taikhoan" placeholder="Nhập Địa Chỉ.." required>
+            <input type="text" class="form-control" id="validationDefault02"name="taikhoan" placeholder="Nhập Tài khoản.." required>
         </div>
         <div class="col-md-4 mb-3">
             <label for="validationDefault02">Mật Khẩu</label>
-            <input type="text" class="form-control" id="validationDefault02"name="matkhau" placeholder="Nhập Địa Chỉ.." required>
+            <input type="text" class="form-control" id="validationDefault02"name="matkhau" placeholder="Nhập Mật khẩu." required>
 
         </div>
         <div class="col-md-4 mb-3">
